@@ -1,0 +1,7 @@
+{
+  "name": "economy",
+  "author": "@theseems",
+  "version": "0.1D",
+  "description": "An economy package",
+  "main": "me.theseems.tomshelby.economypack.EconomyBotPackage"
+}
