@@ -22,6 +22,16 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>TomShelbyBot Economy Package</id>
+            <name>GitHub TomShelbyBot Economy Package Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/TomShelbyBot/EconomyPack</url>
+            <layout>default</layout>
+        </repository>
+    </distributionManagement>
+
+
     <dependencies>
         <dependency>
             <groupId>me.theseems</groupId>
