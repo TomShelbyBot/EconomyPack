@@ -22,21 +22,18 @@
         </plugins>
     </build>
 
-    <distributionManagement>
+    <repositories>
         <repository>
-            <id>TomShelbyBot Economy Package</id>
-            <name>GitHub TomShelbyBot Economy Package Apache Maven Packages</name>
-            <url>https://maven.pkg.github.com/TomShelbyBot/EconomyPack</url>
-            <layout>default</layout>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
         </repository>
-    </distributionManagement>
-
+    </repositories>
 
     <dependencies>
         <dependency>
-            <groupId>me.theseems</groupId>
-            <artifactId>tomshelby</artifactId>
-            <version>0.7D</version>
+            <groupId>com.github.TomShelbyBot</groupId>
+            <artifactId>tomshelbybot</artifactId>
+            <version>0.9D</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
