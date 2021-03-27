@@ -3,6 +3,7 @@ package me.theseems.tomshelby.economypack;
 import me.theseems.tomshelby.ThomasBot;
 import me.theseems.tomshelby.economypack.api.EconomyApi;
 import me.theseems.tomshelby.economypack.api.EconomyProvider;
+import me.theseems.tomshelby.economypack.commands.BalanceTopCommand;
 import me.theseems.tomshelby.economypack.commands.GetMoneyCommand;
 import me.theseems.tomshelby.economypack.commands.GiveMoneyCommand;
 import me.theseems.tomshelby.economypack.commands.TransferMoneyCommand;
@@ -36,6 +37,7 @@ public class EconomyBotPackage extends JavaBotPackage {
     getBot().getCommandContainer().attach(new GiveMoneyCommand());
     getBot().getCommandContainer().attach(new GetMoneyCommand());
     getBot().getCommandContainer().attach(new TransferMoneyCommand());
+    getBot().getCommandContainer().attach(new BalanceTopCommand());
   }
 
   @Override
@@ -43,6 +45,7 @@ public class EconomyBotPackage extends JavaBotPackage {
     getBot().getCommandContainer().detach("givemoney");
     getBot().getCommandContainer().detach("getmoney");
     getBot().getCommandContainer().detach("transfermoney");
+    getBot().getCommandContainer().detach("baltop");
   }
 
   public static EconomyProvider getOrCreate(Long chatId) {
