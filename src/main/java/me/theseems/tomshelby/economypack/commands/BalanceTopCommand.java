@@ -86,6 +86,6 @@ public class BalanceTopCommand extends SimpleBotCommand implements AdminPermissi
                     .append(balanceEntry.money)
                     .append("\n"));
 
-    thomasBot.replyBack(update, new SendMessage().setText(builder.toString()).enableMarkdown(true));
+    thomasBot.replyBack(update, new SendMessage().setText(builder.toString()));
   }
 }
