@@ -34,10 +34,6 @@ public class TransferMoneyCommand extends SimpleBotCommand implements AdminPermi
       return;
     }
 
-    if (userId.get().equals(update.getMessage().getFrom().getId())) {
-      thomasBot.replyBackText(update, "Нельзя перевести себе деньги!");
-    }
-
     try {
       BigDecimal amount = new BigDecimal(strings[1]);
       EconomyProvider provider = EconomyBotPackage.getOrCreate(update.getMessage().getChatId());
@@ -54,13 +50,14 @@ public class TransferMoneyCommand extends SimpleBotCommand implements AdminPermi
                   thomasBot.replyBackText(
                       update,
                       transaction.getStatus().success
-                          ? "Исполнено.\n"
+                          ? "\uD83C\uDD97 Исполнено.\n"
                               + "Счет отправителя: "
                               + transaction.getProvider().getMoney(transaction.getFrom())
                               + "\n"
                               + "Счет получателя: "
                               + transaction.getProvider().getMoney(transaction.getTo())
-                          : "Неудача: " + transaction.getStatus().message));
+                          : "\n\uD83D\uDEAB Транзакция отклонена.\n"
+                              + transaction.getStatus().message));
     } catch (NumberFormatException e) {
       thomasBot.replyBackText(update, "Не удалось определить сумму для выдачи");
     }
