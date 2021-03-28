@@ -7,6 +7,7 @@ import me.theseems.tomshelby.storage.SimpleTomMeta;
 import me.theseems.tomshelby.storage.TomMeta;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.Optional;
 
 public class ChatEconomyProvider implements EconomyProvider {
@@ -34,6 +35,7 @@ public class ChatEconomyProvider implements EconomyProvider {
    */
   @Override
   public void setMoney(Integer userId, BigDecimal amount) {
+    amount = amount.setScale(15, RoundingMode.HALF_DOWN);
     ThomasBot bot = EconomyBotPackage.getPackageBot();
     TomMeta chatMeta = bot.getChatStorage().getChatMeta(chatId);
 
@@ -56,7 +58,8 @@ public class ChatEconomyProvider implements EconomyProvider {
 
     return tomMeta
         .map(meta -> new BigDecimal(meta.getString(userId.toString()).orElse("0")))
-        .orElse(BigDecimal.ZERO);
+        .orElse(BigDecimal.ZERO)
+        .setScale(15, RoundingMode.HALF_DOWN);
   }
 
   @Override

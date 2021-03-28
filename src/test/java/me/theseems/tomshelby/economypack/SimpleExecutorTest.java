@@ -10,9 +10,21 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SimpleExecutorTest {
+
+  @Test
+  public void simpleExecutor_divisionTest1() {
+    MemoryEconomyProvider provider = new MemoryEconomyProvider("test");
+    SimpleTransactionExecutor executor = new SimpleTransactionExecutor();
+    provider.setExecutor(executor);
+
+    provider.setMoney(0, BigDecimal.TEN);
+    System.out.println(provider.getMoney(0).divide(BigDecimal.valueOf(3), RoundingMode.HALF_DOWN));
+  }
+
   @Test
   public void simpleExecutor_stressTest1() {
     MemoryEconomyProvider provider = new MemoryEconomyProvider("test");

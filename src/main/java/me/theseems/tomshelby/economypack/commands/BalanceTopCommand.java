@@ -10,6 +10,7 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -83,7 +84,7 @@ public class BalanceTopCommand extends SimpleBotCommand implements AdminPermissi
                     .append(". ")
                     .append(balanceEntry.username)
                     .append(" - ")
-                    .append(balanceEntry.money)
+                    .append(DecimalFormat.getNumberInstance().format(balanceEntry.money))
                     .append("\n"));
 
     thomasBot.replyBack(update, new SendMessage().setText(builder.toString()));

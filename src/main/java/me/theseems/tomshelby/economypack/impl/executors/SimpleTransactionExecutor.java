@@ -28,8 +28,8 @@ public class SimpleTransactionExecutor implements TransactionExecutor {
   }
 
   public void launch() {
-    ScheduledExecutorService service = Executors.newScheduledThreadPool(2);
-    service.scheduleAtFixedRate(this::run, 0, 20, TimeUnit.MILLISECONDS);
+    ScheduledExecutorService service = Executors.newScheduledThreadPool(8);
+    service.scheduleAtFixedRate(this::run, 0, 1, TimeUnit.NANOSECONDS);
   }
 
   // Get executor handling transaction type

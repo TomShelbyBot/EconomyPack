@@ -9,6 +9,7 @@ import me.theseems.tomshelby.economypack.api.EconomyProvider;
 import me.theseems.tomshelby.economypack.utils.DragUtils;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+import java.text.DecimalFormat;
 import java.util.Optional;
 
 public class GetMoneyCommand extends SimpleBotCommand implements AdminPermissibleBotCommand {
@@ -33,6 +34,8 @@ public class GetMoneyCommand extends SimpleBotCommand implements AdminPermissibl
 
     EconomyProvider provider = EconomyBotPackage.getOrCreate(update.getMessage().getChatId());
     thomasBot.replyBackText(
-        update, "Денег на счету: " + provider.getMoney(userId.get()).toString());
+        update,
+        "Денег на счету: "
+            + DecimalFormat.getNumberInstance().format(provider.getMoney(userId.get())));
   }
 }
