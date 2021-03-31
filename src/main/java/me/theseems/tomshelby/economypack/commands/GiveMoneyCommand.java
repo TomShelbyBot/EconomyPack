@@ -15,6 +15,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.Optional;
 
 public class GiveMoneyCommand extends SimpleBotCommand implements PermissibleBotCommand {
@@ -52,7 +53,7 @@ public class GiveMoneyCommand extends SimpleBotCommand implements PermissibleBot
                       transaction.getStatus().success
                           ? "Исполнено.\n"
                               + "Счет получателя: "
-                              + transaction.getProvider().getMoney(transaction.getTo())
+                              + DecimalFormat.getNumberInstance().format(transaction.getProvider().getMoney(transaction.getTo()))
                           : "Неудача: " + transaction.getStatus().message));
     } catch (NumberFormatException e) {
       thomasBot.replyBackText(update, "Не удалось определить сумму для выдачи");

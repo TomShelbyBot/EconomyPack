@@ -11,6 +11,7 @@ import me.theseems.tomshelby.economypack.utils.DragUtils;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 import java.util.Optional;
 
 public class TransferMoneyCommand extends SimpleBotCommand implements AdminPermissibleBotCommand {
@@ -52,10 +53,12 @@ public class TransferMoneyCommand extends SimpleBotCommand implements AdminPermi
                       transaction.getStatus().success
                           ? "\uD83C\uDD97 Исполнено.\n"
                               + "Счет отправителя: "
-                              + transaction.getProvider().getMoney(transaction.getFrom())
+                              + DecimalFormat.getNumberInstance()
+                                  .format(transaction.getProvider().getMoney(transaction.getFrom()))
                               + "\n"
                               + "Счет получателя: "
-                              + transaction.getProvider().getMoney(transaction.getTo())
+                              + DecimalFormat.getNumberInstance()
+                                  .format(transaction.getProvider().getMoney(transaction.getTo()))
                           : "\n\uD83D\uDEAB Транзакция отклонена.\n"
                               + transaction.getStatus().message));
     } catch (NumberFormatException e) {
