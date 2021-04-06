@@ -66,7 +66,7 @@ public class GiveMoneyCommand extends SimpleBotCommand implements PermissibleBot
     try {
       for (ChatMember chatMember :
           Main.getBot().execute(new GetChatAdministrators().setChatId(chatId))) {
-        if (chatMember.getStatus().equals("creator")) return true;
+        if (chatMember.getUser().getId().equals(userId) && chatMember.getStatus().equals("creator")) return true;
       }
     } catch (TelegramApiException e) {
       e.printStackTrace();
