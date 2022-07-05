@@ -9,8 +9,8 @@ import java.math.BigDecimal;
 public class SimpleTransferTransactionHandler extends TransactionHandler<TransferTransaction> {
   @Override
   public void execute(TransferTransaction transaction) {
-    Integer from = transaction.getFrom();
-    Integer to = transaction.getTo();
+    Long from = transaction.getFrom();
+    Long to = transaction.getTo();
     if (from.equals(to))
       throw new IllegalStateException("Пользователь пытается перевести деньги себе");
 

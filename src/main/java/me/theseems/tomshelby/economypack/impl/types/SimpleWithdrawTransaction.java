@@ -10,9 +10,9 @@ import java.util.UUID;
 
 public class SimpleWithdrawTransaction extends SimpleTransaction implements WithdrawTransaction {
   private final BigDecimal amount;
-  private final Integer to;
+  private final Long to;
 
-  public SimpleWithdrawTransaction(EconomyProvider provider, BigDecimal amount, Integer to) {
+  public SimpleWithdrawTransaction(EconomyProvider provider, BigDecimal amount, Long to) {
     super(provider, TransactionStatus.QUEUED, UUID.randomUUID());
     this.amount = amount;
     this.to = to;
@@ -34,7 +34,7 @@ public class SimpleWithdrawTransaction extends SimpleTransaction implements With
    * @return to user's id
    */
   @Override
-  public Integer getTo() {
+  public Long getTo() {
     return to;
   }
 

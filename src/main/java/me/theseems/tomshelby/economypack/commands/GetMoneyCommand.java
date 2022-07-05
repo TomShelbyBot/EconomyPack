@@ -19,12 +19,12 @@ public class GetMoneyCommand extends SimpleBotCommand implements AdminPermissibl
 
   @Override
   public void handle(ThomasBot thomasBot, String[] strings, Update update) {
-    Optional<Integer> userId;
+    Optional<Long> userId;
 
     if (strings.length != 0) {
       userId = DragUtils.dragUserId(update.getMessage().getChatId(), strings[0]);
     } else {
-      userId = Optional.ofNullable(update.getMessage().getFrom().getId());
+      userId = Optional.of(update.getMessage().getFrom().getId());
     }
 
     if (!userId.isPresent()) {

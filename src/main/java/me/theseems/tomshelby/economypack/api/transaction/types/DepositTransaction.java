@@ -15,5 +15,5 @@ public interface DepositTransaction extends Transaction {
    * Get user to deposit to
    * @return to user's id
    */
-  Integer getTo();
+  Long getTo();
 }

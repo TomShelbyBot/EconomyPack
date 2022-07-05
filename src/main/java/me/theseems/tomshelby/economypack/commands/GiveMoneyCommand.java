@@ -10,12 +10,13 @@ import me.theseems.tomshelby.economypack.api.EconomyProvider;
 import me.theseems.tomshelby.economypack.impl.types.SimpleDepositTransaction;
 import me.theseems.tomshelby.economypack.utils.DragUtils;
 import org.telegram.telegrambots.meta.api.methods.groupadministration.GetChatAdministrators;
-import org.telegram.telegrambots.meta.api.objects.ChatMember;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.chatmember.ChatMember;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
+import java.util.List;
 import java.util.Optional;
 
 public class GiveMoneyCommand extends SimpleBotCommand implements PermissibleBotCommand {
@@ -30,7 +31,7 @@ public class GiveMoneyCommand extends SimpleBotCommand implements PermissibleBot
       return;
     }
 
-    Optional<Integer> userId = DragUtils.dragUserId(update.getMessage().getChatId(), strings[0]);
+    Optional<Long> userId = DragUtils.dragUserId(update.getMessage().getChatId(), strings[0]);
     if (!userId.isPresent()) {
       thomasBot.replyBackText(update, "Не могу найти данного юзера");
       return;
@@ -60,13 +61,18 @@ public class GiveMoneyCommand extends SimpleBotCommand implements PermissibleBot
     }
   }
 
-  // By default restricted to the group creator
+  // By default, restricted to the group creator
   @Override
-  public boolean canUse(Long chatId, Integer userId) {
+  public boolean canUse(String chatId, Long userId) {
     try {
-      for (ChatMember chatMember :
-          Main.getBot().execute(new GetChatAdministrators().setChatId(chatId))) {
-        if (chatMember.getUser().getId().equals(userId) && chatMember.getStatus().equals("creator")) return true;
+      GetChatAdministrators getChatAdministrators = new GetChatAdministrators();
+      getChatAdministrators.setChatId(chatId);
+
+      List<ChatMember> administators = Main.getBot().execute(getChatAdministrators);
+      for (ChatMember chatMember : administators) {
+        if (chatMember.getUser().getId().equals(userId) && chatMember.getStatus().equals("creator")) {
+            return true;
+        }
       }
     } catch (TelegramApiException e) {
       e.printStackTrace();
