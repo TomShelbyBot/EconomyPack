@@ -29,7 +29,7 @@ public class TransferMoneyCommand extends SimpleBotCommand implements AdminPermi
       return;
     }
 
-    Optional<Integer> userId = DragUtils.dragUserId(update.getMessage().getChatId(), strings[0]);
+    Optional<Long> userId = DragUtils.dragUserId(update.getMessage().getChatId(), strings[0]);
     if (!userId.isPresent()) {
       thomasBot.replyBackText(update, "Не могу найти данного юзера");
       return;

@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MemoryEconomyProvider implements EconomyProvider {
-  private final Map<Integer, BigDecimal> accountMap;
+  private final Map<Long, BigDecimal> accountMap;
   private final String name;
   private TransactionExecutor executor;
 
@@ -32,12 +32,12 @@ public class MemoryEconomyProvider implements EconomyProvider {
   }
 
   @Override
-  public void setMoney(Integer userId, BigDecimal amount) {
+  public void setMoney(Long userId, BigDecimal amount) {
     accountMap.put(userId, amount);
   }
 
   @Override
-  public BigDecimal getMoney(Integer userId) {
+  public BigDecimal getMoney(Long userId) {
     if (!accountMap.containsKey(userId))
       return BigDecimal.ZERO;
     return accountMap.get(userId);

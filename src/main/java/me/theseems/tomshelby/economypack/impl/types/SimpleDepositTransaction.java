@@ -10,9 +10,9 @@ import java.util.UUID;
 
 public class SimpleDepositTransaction extends SimpleTransaction implements DepositTransaction {
   private final BigDecimal amount;
-  private final Integer to;
+  private final Long to;
 
-  public SimpleDepositTransaction(EconomyProvider provider, BigDecimal amount, Integer to) {
+  public SimpleDepositTransaction(EconomyProvider provider, BigDecimal amount, Long to) {
     super(provider, TransactionStatus.QUEUED, UUID.randomUUID());
     this.amount = amount;
     this.to = to;
@@ -34,7 +34,7 @@ public class SimpleDepositTransaction extends SimpleTransaction implements Depos
    * @return to user's id
    */
   @Override
-  public Integer getTo() {
+  public Long getTo() {
     return to;
   }
 

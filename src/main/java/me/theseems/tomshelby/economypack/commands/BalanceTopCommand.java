@@ -56,12 +56,12 @@ public class BalanceTopCommand extends SimpleBotCommand implements AdminPermissi
     List<BalanceEntry> entryList = new ArrayList<>();
     thomasBot
         .getChatStorage()
-        .getResolvableUsernames(chatId)
+        .getResolvableUsernames(String.valueOf(chatId))
         .forEach(
             username ->
                 thomasBot
                     .getChatStorage()
-                    .lookup(chatId, username)
+                    .lookup(String.valueOf(chatId), username)
                     .ifPresent(
                         userId ->
                             entryList.add(new BalanceEntry(username, provider.getMoney(userId)))));
@@ -87,6 +87,9 @@ public class BalanceTopCommand extends SimpleBotCommand implements AdminPermissi
                     .append(DecimalFormat.getNumberInstance().format(balanceEntry.money))
                     .append("\n"));
 
-    thomasBot.replyBack(update, new SendMessage().setText(builder.toString()));
+    SendMessage sendMessage = new SendMessage();
+    sendMessage.setText(builder.toString());
+
+    thomasBot.replyBack(update, sendMessage);
   }
 }

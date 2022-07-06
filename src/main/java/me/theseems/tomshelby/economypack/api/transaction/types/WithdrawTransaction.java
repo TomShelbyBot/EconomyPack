@@ -15,5 +15,5 @@ public interface WithdrawTransaction extends Transaction {
    * Get user to withdraw to
    * @return to user's id
    */
-  Integer getTo();
+  Long getTo();
 }

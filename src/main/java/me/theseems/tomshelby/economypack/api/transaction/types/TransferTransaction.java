@@ -15,11 +15,11 @@ public interface TransferTransaction extends Transaction {
    * Get user to transfer from
    * @return from user's id
    */
-  Integer getFrom();
+  Long getFrom();
 
   /**
    * Get user to transfer to
    * @return to user's id
    */
-  Integer getTo();
+  Long getTo();
 }

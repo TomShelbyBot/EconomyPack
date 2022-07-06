@@ -53,7 +53,7 @@ public class EconomyBotPackage extends JavaBotPackage {
         EconomyApi.getManager().getProvider("chatEconomy" + chatId);
 
     if (!providerOptional.isPresent()) {
-      ChatEconomyProvider chatEconomyProvider = new ChatEconomyProvider(chatId);
+      ChatEconomyProvider chatEconomyProvider = new ChatEconomyProvider(chatId.toString());
       EconomyApi.getManager().registerProvider(chatEconomyProvider);
       return chatEconomyProvider;
     } else {

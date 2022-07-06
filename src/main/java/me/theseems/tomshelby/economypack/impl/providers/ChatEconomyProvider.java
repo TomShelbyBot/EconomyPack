@@ -11,9 +11,9 @@ import java.math.RoundingMode;
 import java.util.Optional;
 
 public class ChatEconomyProvider implements EconomyProvider {
-  private final Long chatId;
+  private final String chatId;
 
-  public ChatEconomyProvider(Long chatId) {
+  public ChatEconomyProvider(String chatId) {
     this.chatId = chatId;
   }
 
@@ -34,7 +34,7 @@ public class ChatEconomyProvider implements EconomyProvider {
    * @param amount to set
    */
   @Override
-  public void setMoney(Integer userId, BigDecimal amount) {
+  public void setMoney(Long userId, BigDecimal amount) {
     amount = amount.setScale(15, RoundingMode.HALF_DOWN);
     ThomasBot bot = EconomyBotPackage.getPackageBot();
     TomMeta chatMeta = bot.getChatStorage().getChatMeta(chatId);
@@ -51,7 +51,7 @@ public class ChatEconomyProvider implements EconomyProvider {
    * @return money
    */
   @Override
-  public BigDecimal getMoney(Integer userId) {
+  public BigDecimal getMoney(Long userId) {
     ThomasBot bot = EconomyBotPackage.getPackageBot();
     TomMeta chatMeta = bot.getChatStorage().getChatMeta(chatId);
     Optional<TomMeta> tomMeta = chatMeta.getContainer("chatEconomy");
@@ -67,7 +67,7 @@ public class ChatEconomyProvider implements EconomyProvider {
     return "ChatEconomyProvider{" + "chatId=" + chatId + '}';
   }
 
-  public Long getChatId() {
+  public String getChatId() {
     return chatId;
   }
 }

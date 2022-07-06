@@ -6,7 +6,7 @@
 
     <groupId>me.theseems.tomshelby</groupId>
     <artifactId>economypack</artifactId>
-    <version>0.2D</version>
+    <version>0.3D</version>
 
     <build>
         <plugins>
@@ -33,7 +33,7 @@
         <dependency>
             <groupId>com.github.TomShelbyBot</groupId>
             <artifactId>tomshelbybot</artifactId>
-            <version>0.9D</version>
+            <version>0.10D-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>

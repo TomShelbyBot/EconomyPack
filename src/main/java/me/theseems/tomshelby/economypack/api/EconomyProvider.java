@@ -25,12 +25,12 @@ public interface EconomyProvider {
    * @param userId to set to
    * @param amount to set
    */
-  void setMoney(Integer userId, BigDecimal amount);
+  void setMoney(Long userId, BigDecimal amount);
 
   /**
    * Get user's money
    * @param userId to get amount of money of
    * @return money
    */
-  BigDecimal getMoney(Integer userId);
+  BigDecimal getMoney(Long userId);
 }

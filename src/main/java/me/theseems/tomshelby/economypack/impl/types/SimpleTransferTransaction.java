@@ -9,11 +9,11 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 public class SimpleTransferTransaction extends SimpleTransaction implements TransferTransaction {
-  Integer from;
-  Integer to;
+  Long from;
+  Long to;
   BigDecimal amount;
 
-  public SimpleTransferTransaction(EconomyProvider provider, Integer from, Integer to, BigDecimal amount) {
+  public SimpleTransferTransaction(EconomyProvider provider, Long from, Long to, BigDecimal amount) {
     super(provider, TransactionStatus.QUEUED, UUID.randomUUID());
     this.from = from;
     this.to = to;
@@ -36,7 +36,7 @@ public class SimpleTransferTransaction extends SimpleTransaction implements Tran
    * @return from user's id
    */
   @Override
-  public Integer getFrom() {
+  public Long getFrom() {
     return from;
   }
 
@@ -46,7 +46,7 @@ public class SimpleTransferTransaction extends SimpleTransaction implements Tran
    * @return to user's id
    */
   @Override
-  public Integer getTo() {
+  public Long getTo() {
     return to;
   }
 }
