@@ -33,7 +33,7 @@
         <dependency>
             <groupId>com.github.TomShelbyBot</groupId>
             <artifactId>tomshelbybot</artifactId>
-            <version>0.10D-SNAPSHOT</version>
+            <version>0.10D</version>
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
